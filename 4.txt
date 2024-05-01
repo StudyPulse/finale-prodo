@@ -1,0 +1,67 @@
+// exp4 - icon, image, chart
+
+import 'package:d_chart/commons/data_model.dart';
+import 'package:d_chart/ordinal/bar.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Icon(Icons.insert_chart), // Icon added here
+            SizedBox(
+                width: 8), // Adding some space between the icon and the title
+            Text('D\'Chart'),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.white,
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          AspectRatio(
+            aspectRatio: 16 / 9,
+            child: DChartBarO(
+              groupList: [
+                OrdinalGroup(
+                  id: '1',
+                  data: [
+                    OrdinalData(domain: 'Mon', measure: 2),
+                    OrdinalData(domain: 'Tue', measure: 6),
+                    OrdinalData(domain: 'Wed', measure: 3),
+                    OrdinalData(domain: 'Thu', measure: 7),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+              height: 16), // Adding some space between the chart and the image
+          Center(
+            child: Image.network(
+              'https://imgs.search.brave.com/ZaKz9KIhgzD-V87a89xrMwRFkAh_5UCndR1Kt7Wg7IY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAxLzI1LzY0LzUz/LzM2MF9GXzEyNTY0/NTMyOV9QYzZSbjFz/b1V1QVp5SGdwNERZ/eFhLVVhJVFNGQ2Mx/Ui5qcGc', // Replace 'https://example.com/image.jpg' with your image URL
+              width: 200, // Set the width of the image
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,60 @@
+// exp6 - animation
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AnimatedContainerDemo(),
+    );
+  }
+}
+
+class AnimatedContainerDemo extends StatefulWidget {
+  @override
+  _AnimatedContainerDemoState createState() => _AnimatedContainerDemoState();
+}
+
+class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
+  bool _isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Simple Animation Example'),
+      ),
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              _isExpanded = !_isExpanded;
+            });
+          },
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 500),
+            width: _isExpanded ? 200.0 : 100.0,
+            height: _isExpanded ? 200.0 : 100.0,
+            color: _isExpanded ? Colors.blue : Colors.red,
+            curve: Curves.easeInOut,
+            child: Center(
+              child: Text(
+                _isExpanded ? 'Expanded' : 'Collapsed',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
