@@ -1,3 +1,4 @@
+// dependency in pubspec - d_chart: ^2.6.9
 // exp4 - icon, image, chart
 
 import 'package:d_chart/commons/data_model.dart';
